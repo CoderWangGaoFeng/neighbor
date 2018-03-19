@@ -1,8 +1,10 @@
 package com.neighbor.controller.web.account;
 
 import com.neighbor.exception.NeiException;
-import com.neighbor.model.ResponseObject;
-import com.neighbor.model.sys.AccountModel;
+import com.neighbor.module.ResponseObject;
+import com.neighbor.module.ResponseStatus;
+import com.neighbor.module.account.vo.AccountVo;
+import com.neighbor.module.sys.AccountModule;
 import com.neighbor.service.account.AccountService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;
@@ -18,7 +20,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @AllArgsConstructor//用于给所有对象初始化时赋值
-@RequestMapping("/account")
+@RequestMapping("/api")
 @Api(value = "用户")
 public class AccountController {
 
@@ -28,8 +30,8 @@ public class AccountController {
      * 注册
      * @param account
      */
-    @PostMapping
-    public void signUp(AccountModel account)throws Exception{
+    @RequestMapping(value="/signup",method = RequestMethod.POST)
+    public void signUp(AccountModule account)throws Exception{
         this.accountService.signUp(account);
     }
 
@@ -40,19 +42,20 @@ public class AccountController {
      * @return
      */
     @RequestMapping(value = "/signin",method = RequestMethod.POST)
-    public ResponseObject signIn(@RequestParam("userName")String userName ,
-                                 @RequestParam("password")String password,
-                                 @RequestParam(name="rememberMe",defaultValue = "false")boolean rememberMe){
+    public AccountVo signIn(@RequestParam("userName")String userName ,
+                            @RequestParam("password")String password,
+                            @RequestParam(name="rememberMe",defaultValue = "false")boolean rememberMe)
+                            throws Exception{
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(userName, password);
         token.setRememberMe(rememberMe);
-        try {
-            subject.login(token);
-        } catch (AuthenticationException e) {
-            e.printStackTrace();
-            throw new NeiException("帐号或密码错误",401);
-        }
-
-        return new ResponseObject().success(null,"登录成功",200);
+//        try {
+//            subject.login(token);
+//        } catch (AuthenticationException e) {
+//            e.printStackTrace();
+//            throw new NeiException("帐号或密码错误",401);
+//        }
+        AccountModule account = new AccountModule().setUserName(userName).setPassword(password);
+        return this.accountService.signIn(account);
     }
 }

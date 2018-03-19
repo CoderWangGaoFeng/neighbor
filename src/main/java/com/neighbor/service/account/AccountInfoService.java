@@ -1,6 +1,6 @@
 package com.neighbor.service.account;
 
-import com.neighbor.model.account.AccountAddressModel;
+import com.neighbor.module.account.AccountAddressModule;
 
 /**
  * 用户信息逻辑层
@@ -12,5 +12,5 @@ public interface AccountInfoService {
      * 完善信息
      * @param info
      */
-    public void insert(AccountAddressModel info)throws Exception ;
+    public void insert(AccountAddressModule info)throws Exception ;
 }

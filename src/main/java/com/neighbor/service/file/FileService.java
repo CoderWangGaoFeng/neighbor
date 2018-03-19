@@ -1,6 +1,6 @@
 package com.neighbor.service.file;
 
-import com.neighbor.model.file.FileModel;
+import com.neighbor.module.file.FileModel;
 import org.springframework.web.multipart.MultipartFile;
 
 /**

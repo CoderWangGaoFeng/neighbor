@@ -1,12 +1,19 @@
 package com.neighbor.exception;
 
-/**
- * 异常返回类
- * @author wgf
- */
-public class NeiException extends RuntimeException {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-    private Integer code = 500;
+import java.io.Serializable;
+
+/**
+ * 自定义异常
+ * @author wgf
+ * 可以通过@ResponseStatus注解配合修改返回异常的状态码
+ */
+//@ResponseStatus(value = HttpStatus.UNAUTHORIZED)
+public class NeiException extends RuntimeException implements Serializable {
+
+    private Integer status  = 500;
 
     private String message;
 
@@ -17,11 +24,13 @@ public class NeiException extends RuntimeException {
 
     public NeiException(String message){
         super(message);
+        this.message = message;
     }
 
-    public NeiException(String message , int code ){
+    public NeiException(String message , int status ){
+        super(message);
         this.message = message ;
-        this.code = code;
+        this.status = status;
     }
 
 }

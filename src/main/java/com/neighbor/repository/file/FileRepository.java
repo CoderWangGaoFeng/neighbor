@@ -1,6 +1,6 @@
 package com.neighbor.repository.file;
 
-import com.neighbor.model.file.FileModel;
+import com.neighbor.module.file.FileModel;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import javax.transaction.Transactional;

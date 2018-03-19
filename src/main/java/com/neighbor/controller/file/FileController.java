@@ -1,6 +1,6 @@
 package com.neighbor.controller.file;
 
-import com.neighbor.model.file.FileModel;
+import com.neighbor.module.file.FileModel;
 import com.neighbor.service.file.FileService;
 import io.swagger.annotations.Api;
 import lombok.AllArgsConstructor;

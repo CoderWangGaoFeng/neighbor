@@ -1,7 +1,7 @@
 package com.neighbor.service.file.imp;
 
 import com.neighbor.exception.NeiException;
-import com.neighbor.model.file.FileModel;
+import com.neighbor.module.file.FileModel;
 import com.neighbor.repository.file.FileRepository;
 import com.neighbor.service.file.FileService;
 import lombok.AllArgsConstructor;

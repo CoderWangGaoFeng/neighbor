@@ -8,5 +8,6 @@ public class NeighborWebApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(NeighborWebApplication.class, args);
+
 	}
 }

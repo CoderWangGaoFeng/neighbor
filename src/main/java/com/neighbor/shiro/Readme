@@ -1,0 +1,7 @@
+MyAuthenticationToken.java：shiro配置类。登录时，用于校验用户是否登录
+AuthFilter.java:shiro配置类，该类继承了OncePerRequestFilter.java。该类在一次请求操作中只会被执行一次。
+OAuth2Filter.java：请求校验登录类。
+OAuth2Realm.java:登录校验类
+ShiroUtils.java:用户通过校验后，通过Threadlocal存储用户数据。便于在该次请求中随时取出使用
+ShrioConfig.java：shiro核心配置类。包括权限等
+实体类包括：角色，用户，权限类
